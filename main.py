@@ -20,12 +20,16 @@ for filepath in filepaths:
 
     parts = filename.split("-")  # Splits 10001-2023.1.18 into ["10001", "2023.1.18"] by splitting it at the hyphen "-"
     first_part = parts[0]  # Selects "10001"
+    second_part = parts[1] # Selects the date "2023.1.18"
 
     invoice_no = first_part
+    invoice_date = second_part
     print(invoice_no)
 
     pdf.set_font(family="Times", size=16, style="B")
     pdf.cell(w=50, h=8, txt=f"Invoice No. {invoice_no}")
+    pdf.ln(10)
+    pdf.cell(w=50, h=8, txt=f"Date: {invoice_date}")
     pdf.output(f"PDFs/{filename}.pdf") # automatically name and save the pdf docs in a folder
 
 
